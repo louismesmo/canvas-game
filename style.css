@@ -1,0 +1,29 @@
+#game-canvas {
+  border: 2px solid black;
+  box-shadow: 5px 5px black;
+}
+
+.container {
+  padding: 1rem;
+  width: 100%;
+}
+
+.center {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  margin-top: 1rem;
+}
+
+.btn-action {
+  border: 2px solid black;
+  padding: 0.5rem;
+  background-color: lightgray;
+}
+
+.btn-action:hover {
+  background-color: lightslategray;
+  cursor: pointer;
+}
