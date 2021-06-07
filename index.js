@@ -4,7 +4,6 @@ class Sheet {
     this.pixels = [];
     this.ctx = ctx;
     this.currentColor = currentColor;
-    
 
     var pixelSize = canvasSize / pixelsPerRow;
     var x,
@@ -16,70 +15,47 @@ class Sheet {
     }
 
     // this.handleRightClick = this.handleRightClick.bind(this);
-    this.handlePress = this.handlePress.bind(this);
-    this.handleDraw = this.handleDraw.bind(this);
-    this.handleStop = this.handleStop.bind(this);
+    this.handleDown = this.handleDown.bind(this);
+    this.handleMove = this.handleMove.bind(this);
+    this.handleUp = this.handleUp.bind(this);
     this.setColor = this.setColor.bind(this);
+    this.paint = this.paint.bind(this);
   }
 
-  // handleRightClick(event){
-
-  //   event.preventDefault();
-  //   this.pixels.forEach(function (pixel) {
-  //     if (pixel.collides(x, y)) {
-  //       ctx.globalCompositeOperation="destination-out";
-  //       pixel.setColor("rgba(255,255,255,1)");
-  //       pixel.draw(ctx);
-  //     }
-  //   }, this);
-  // }
-
-  handlePress(event){ // mousedown
+  handleDown(event) {
+    // mousedown
     isDown = true;
   }
-  handleDraw(event) { // mousemove
-    
+  handleMove(event) {
+    // mousemove
+    if(isDown){
+      this.paint(event);
+    }
+  }
+  handleUp(event) {
+    // mouseup
+    isDown = false;
+    this.paint(event);
+  }
+
+  paint(event){
     var x = event.pageX - canvasLeft,
       y = event.pageY - canvasTop;
     this.pixels.forEach(function (pixel) {
-      if (pixel.collides(x, y) && tool[0].checked && isDown) {
-        ctx.globalCompositeOperation="source-over";
-        pixel.setColor(this.currentColor);
+      if (pixel.collides(x, y)) {
+        if(tool[0].checked) {
+          ctx.globalCompositeOperation = "source-over";
+          pixel.setColor(this.currentColor);
+        } else {
+          ctx.globalCompositeOperation = "destination-out";
+          pixel.setColor("rgba(255,255,255,1)");
+        }
         pixel.draw(ctx);
       }
     }, this);
-    this.pixels.forEach(function (pixel) {
-      if (pixel.collides(x, y) && tool[1].checked && isDown) {
-        ctx.globalCompositeOperation="destination-out";
-        pixel.setColor("rgba(255,255,255,1)");
-        pixel.draw(ctx);
-      }
-    }, this);
-
-    
-  }
-  handleStop(event){ // mouseup
-    isDown = false;
-    var x = event.pageX - canvasLeft,
-    y = event.pageY - canvasTop;
-
-  this.pixels.forEach(function (pixel) {
-    if (pixel.collides(x, y) && tool[0].checked) {
-      ctx.globalCompositeOperation="source-over";
-      pixel.setColor(this.currentColor);
-      pixel.draw(ctx);
-    }
-  }, this);
-  this.pixels.forEach(function (pixel) {
-    if (pixel.collides(x, y) && tool[1].checked) {
-      ctx.globalCompositeOperation="destination-out";
-      pixel.setColor("rgba(255,255,255,1)");
-      pixel.draw(ctx);
-    }
-  }, this);
   }
 
-  setColor(color) {  
+  setColor(color) {
     this.currentColor = color;
   }
 
@@ -87,7 +63,6 @@ class Sheet {
     this.pixels.forEach(function (pixel) {
       pixel.draw(ctx);
     });
-  
   }
 }
 
@@ -130,11 +105,10 @@ var ctx = canvas.getContext("2d");
 var sheet = new Sheet(512, 16, ctx, picker.value);
 sheet.draw(ctx);
 
-// canvas.addEventListener("contextmenu", sheet.handleRightClick, false);
-canvas.addEventListener("click", sheet.handleDraw, false);
-canvas.addEventListener("mousedown", sheet.handlePress, false);
-canvas.addEventListener("mousemove", sheet.handleDraw, false);
-canvas.addEventListener("mouseup", sheet.handleStop, false);
+canvas.addEventListener("click", sheet.handleMove, false);
+canvas.addEventListener("mousedown", sheet.handleDown, false);
+canvas.addEventListener("mousemove", sheet.handleMove, false);
+canvas.addEventListener("mouseup", sheet.handleUp, false);
 picker.addEventListener("change", (event) => {
   sheet.setColor(event.target.value);
 });
