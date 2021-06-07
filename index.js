@@ -14,7 +14,6 @@ class Sheet {
       }
     }
 
-    // this.handleRightClick = this.handleRightClick.bind(this);
     this.handleDown = this.handleDown.bind(this);
     this.handleMove = this.handleMove.bind(this);
     this.handleUp = this.handleUp.bind(this);
@@ -23,27 +22,30 @@ class Sheet {
   }
 
   handleDown(event) {
-    // mousedown
     isDown = true;
   }
   handleMove(event) {
-    // mousemove
-    if(isDown){
+    event.preventDefault();
+    document.body.classList.add("unselectable");
+
+    if (isDown) {
       this.paint(event);
     }
   }
   handleUp(event) {
-    // mouseup
+    event.preventDefault();
+    document.body.classList.remove("unselectable");
+
     isDown = false;
     this.paint(event);
   }
 
-  paint(event){
+  paint(event) {
     var x = event.pageX - canvasLeft,
       y = event.pageY - canvasTop;
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
-        if(tool[0].checked) {
+        if (tool[0].checked) {
           ctx.globalCompositeOperation = "source-over";
           pixel.setColor(this.currentColor);
         } else {
@@ -109,6 +111,9 @@ canvas.addEventListener("click", sheet.handleMove, false);
 canvas.addEventListener("mousedown", sheet.handleDown, false);
 canvas.addEventListener("mousemove", sheet.handleMove, false);
 canvas.addEventListener("mouseup", sheet.handleUp, false);
+window.addEventListener("mouseup", (event) => {
+  isDown = false;
+});
 picker.addEventListener("change", (event) => {
   sheet.setColor(event.target.value);
 });
