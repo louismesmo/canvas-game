@@ -48,3 +48,16 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+.toolbar label {
+  border: 2px solid black;
+  padding: 0.5rem;
+  text-align: center;
+  line-height: 25px;
+  background-color: lightgrey;
+}
+
+.toolbar label:hover {
+  background-color: grey;
+  cursor: pointer;
+}
