@@ -76,7 +76,7 @@ class Sheet {
   setTool(tool) {
     this.currentTool = tool;
   }
-  fill(pixel) {
+  async fill(pixel) {
     var connectedPixels = [];
     const firstColor = pixel.color;
     connectedPixels.push(pixel);
@@ -102,10 +102,13 @@ class Sheet {
 
       verifiedPixelIndexes.forEach(function (index) {
         var verifiedPixel = this.pixels[index];
+        verifiedPixel.hardDraw("#0000ff", ctx);
         if(firstColor == verifiedPixel.color) {
           connectedPixels.push(verifiedPixel);
+          verifiedPixel.hardDraw("#00ff00", ctx);
         }
       }, this);
+      await new Promise(resolve => setTimeout(resolve, 40));
     }
   }
   draw(ctx) {
@@ -116,7 +119,7 @@ class Sheet {
 }
 
 class Pixel {
-  constructor(posX, posY, size, index, color = "rgba(255,255,255,0)") {
+  constructor(posX, posY, size, index, color = "#ffffff") {
     this.color = color;
     this.posX = posX;
     this.posY = posY;
@@ -140,6 +143,14 @@ class Pixel {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.posX, this.posY, this.size, this.size);
+  }
+
+  hardDraw(color, ctx) {
+    var padding = 2;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.posX, this.posY, this.size, this.size);
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.posX + padding, this.posY + padding, this.size - padding, this.size - padding);
   }
 }
 
