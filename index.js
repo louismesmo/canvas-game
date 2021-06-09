@@ -50,16 +50,16 @@ class Sheet {
   execute(event) {
     var x = event.pageX - canvasLeft,
       y = event.pageY - canvasTop;
+    ctx.globalCompositeOperation = "source-over";
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
         switch (this.currentTool) {
           case "pencil":
-            ctx.globalCompositeOperation = "source-over";
             pixel.setColor(this.currentColor);
             break;
           case "eraser":
             ctx.globalCompositeOperation = "destination-out";
-            pixel.setColor("rgba(255,255,255,1)");
+            pixel.setColor("rgba(255,0,255,1)");
             break;
           case "bucket":
             if (!isDown) this.fill(pixel);
@@ -78,6 +78,7 @@ class Sheet {
   }
   fill(pixel) {
     var connectedPixels = [];
+    var indexesVerified = [];
     const firstColor = pixel.color;
     connectedPixels.push(pixel);
     
@@ -86,27 +87,20 @@ class Sheet {
       currentPixel.setColor(this.currentColor);
       currentPixel.draw(ctx);
       
-      var verifiedPixelIndexes = []
-      if (currentPixel.posX > 0){
-        verifiedPixelIndexes.push(currentPixel.index - 1);
-      }
-      if (currentPixel.posY > 0){
-        verifiedPixelIndexes.push(currentPixel.index - this.pixelsPerRow);
-      }
-      if (currentPixel.posX<((this.pixelsPerRow*currentPixel.size)-currentPixel.size)){
-        verifiedPixelIndexes.push(currentPixel.index + 1);
-      }
-      if (currentPixel.posY<((this.pixelsPerRow*currentPixel.size)-currentPixel.size)){
-        verifiedPixelIndexes.push(currentPixel.index + this.pixelsPerRow);
-      }
+      var indexesToVerify = currentPixel.surroundingPixels(this.pixelsPerRow).filter(
+        i => !indexesVerified.includes(i)
+      );
+      console.log(indexesToVerify);
 
-      verifiedPixelIndexes.forEach(function (index) {
+      indexesToVerify.forEach(function (index) {
         var verifiedPixel = this.pixels[index];
         if(firstColor == verifiedPixel.color) {
           connectedPixels.push(verifiedPixel);
         }
       }, this);
+      indexesVerified.push.apply(indexesVerified, indexesToVerify);
     }
+    console.log("DONE", indexesVerified);
   }
   draw(ctx) {
     this.pixels.forEach(function (pixel) {
@@ -140,6 +134,33 @@ class Pixel {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.posX, this.posY, this.size, this.size);
+  }
+
+  surroundingPixels(pixelsPerRow) {
+    var surroundingPixels = []
+
+    if (this.posX > 0){
+      surroundingPixels.push(this.index - 1);
+    }
+    if (this.posY > 0){
+      surroundingPixels.push(this.index - pixelsPerRow);
+    }
+    if (this.posX<((pixelsPerRow*this.size)-this.size)){
+      surroundingPixels.push(this.index + 1);
+    }
+    if (this.posY<((pixelsPerRow*this.size)-this.size)){
+      surroundingPixels.push(this.index + pixelsPerRow);
+    }
+
+    return surroundingPixels;
+  }
+
+  hardDraw(color, ctx) {
+    var padding = 2;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.posX, this.posY, this.size, this.size);
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.posX + padding, this.posY + padding, this.size - padding, this.size - padding);
   }
 }
 
