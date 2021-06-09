@@ -40,6 +40,13 @@ body {
   height: 0;
 }
 
+.tool:checked {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

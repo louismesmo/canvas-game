@@ -50,16 +50,16 @@ class Sheet {
   execute(event) {
     var x = event.pageX - canvasLeft,
       y = event.pageY - canvasTop;
+    ctx.globalCompositeOperation = "source-over";
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
         switch (this.currentTool) {
           case "pencil":
-            ctx.globalCompositeOperation = "source-over";
             pixel.setColor(this.currentColor);
             break;
           case "eraser":
             ctx.globalCompositeOperation = "destination-out";
-            pixel.setColor("rgba(255,255,255,1)");
+            pixel.setColor("rgba(255,0,255,1)");
             break;
           case "bucket":
             if (!isDown) this.fill(pixel);
@@ -76,8 +76,9 @@ class Sheet {
   setTool(tool) {
     this.currentTool = tool;
   }
-  async fill(pixel) {
+  fill(pixel) {
     var connectedPixels = [];
+    var indexesVerified = [];
     const firstColor = pixel.color;
     connectedPixels.push(pixel);
     
@@ -86,30 +87,20 @@ class Sheet {
       currentPixel.setColor(this.currentColor);
       currentPixel.draw(ctx);
       
-      var verifiedPixelIndexes = []
-      if (currentPixel.posX > 0){
-        verifiedPixelIndexes.push(currentPixel.index - 1);
-      }
-      if (currentPixel.posY > 0){
-        verifiedPixelIndexes.push(currentPixel.index - this.pixelsPerRow);
-      }
-      if (currentPixel.posX<((this.pixelsPerRow*currentPixel.size)-currentPixel.size)){
-        verifiedPixelIndexes.push(currentPixel.index + 1);
-      }
-      if (currentPixel.posY<((this.pixelsPerRow*currentPixel.size)-currentPixel.size)){
-        verifiedPixelIndexes.push(currentPixel.index + this.pixelsPerRow);
-      }
+      var indexesToVerify = currentPixel.surroundingPixels(this.pixelsPerRow).filter(
+        i => !indexesVerified.includes(i)
+      );
+      console.log(indexesToVerify);
 
-      verifiedPixelIndexes.forEach(function (index) {
+      indexesToVerify.forEach(function (index) {
         var verifiedPixel = this.pixels[index];
-        verifiedPixel.hardDraw("#0000ff", ctx);
         if(firstColor == verifiedPixel.color) {
           connectedPixels.push(verifiedPixel);
-          verifiedPixel.hardDraw("#00ff00", ctx);
         }
       }, this);
-      await new Promise(resolve => setTimeout(resolve, 40));
+      indexesVerified.push.apply(indexesVerified, indexesToVerify);
     }
+    console.log("DONE", indexesVerified);
   }
   draw(ctx) {
     this.pixels.forEach(function (pixel) {
@@ -119,7 +110,7 @@ class Sheet {
 }
 
 class Pixel {
-  constructor(posX, posY, size, index, color = "#ffffff") {
+  constructor(posX, posY, size, index, color = "rgba(255,255,255,0)") {
     this.color = color;
     this.posX = posX;
     this.posY = posY;
@@ -143,6 +134,25 @@ class Pixel {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.posX, this.posY, this.size, this.size);
+  }
+
+  surroundingPixels(pixelsPerRow) {
+    var surroundingPixels = []
+
+    if (this.posX > 0){
+      surroundingPixels.push(this.index - 1);
+    }
+    if (this.posY > 0){
+      surroundingPixels.push(this.index - pixelsPerRow);
+    }
+    if (this.posX<((pixelsPerRow*this.size)-this.size)){
+      surroundingPixels.push(this.index + 1);
+    }
+    if (this.posY<((pixelsPerRow*this.size)-this.size)){
+      surroundingPixels.push(this.index + pixelsPerRow);
+    }
+
+    return surroundingPixels;
   }
 
   hardDraw(color, ctx) {
