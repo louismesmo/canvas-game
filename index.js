@@ -1,5 +1,11 @@
+const TRANSPARENT_COLOR = "rgba(255,255,255,0)";
+const LIGHT_GREY = "#EEE";
+const DARK_GREY = "#DDD";
+
+
 // Classes
 class Sheet {
+
   constructor(canvasSize, pixelsPerRow, ctx, currentColor, currentTool) {
     this.pixels = [];
     this.ctx = ctx;
@@ -50,7 +56,6 @@ class Sheet {
   execute(event) {
     var x = event.pageX - canvasLeft,
       y = event.pageY - canvasTop;
-    ctx.globalCompositeOperation = "source-over";
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
         switch (this.currentTool) {
@@ -58,8 +63,7 @@ class Sheet {
             pixel.setColor(this.currentColor);
             break;
           case "eraser":
-            ctx.globalCompositeOperation = "destination-out";
-            pixel.setColor("rgba(255,0,255,1)");
+            pixel.setColor(TRANSPARENT_COLOR);
             break;
           case "bucket":
             if (!isDown) this.fill(pixel);
@@ -110,7 +114,7 @@ class Sheet {
 }
 
 class Pixel {
-  constructor(posX, posY, size, index, color = "rgba(255,255,255,0)") {
+  constructor(posX, posY, size, index, color = TRANSPARENT_COLOR) {
     this.color = color;
     this.posX = posX;
     this.posY = posY;
@@ -132,8 +136,20 @@ class Pixel {
   }
 
   draw(ctx) {
-    ctx.fillStyle = this.color;
+    if (this.color == TRANSPARENT_COLOR){
+      this.drawTransparency(ctx);
+    } else {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.posX, this.posY, this.size, this.size);
+    }
+  }
+
+  drawTransparency(ctx) {
+    ctx.fillStyle = DARK_GREY;
     ctx.fillRect(this.posX, this.posY, this.size, this.size);
+    ctx.fillStyle = LIGHT_GREY;
+    ctx.fillRect(this.posX, this.posY, this.size/2, this.size/2);
+    ctx.fillRect(this.posX+this.size/2, this.posY+this.size/2, this.size/2, this.size/2);
   }
 
   surroundingPixels(pixelsPerRow) {
