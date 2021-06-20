@@ -2,15 +2,80 @@ const TRANSPARENT_COLOR = "rgba(255,255,255,0)";
 const LIGHT_GREY = "#EEE";
 const DARK_GREY = "#DDD";
 
-
 // Classes
+class App{
+
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.canvasLeft = canvas.offsetLeft + canvas.clientLeft,
+    this.canvasTop = canvas.offsetTop + canvas.clientTop,
+    this.isDown = false;
+    this.ctx = canvas.getContext("2d");
+
+    this.handleDown = this.handleDown.bind(this);
+    this.handleMove = this.handleMove.bind(this);
+    this.handleUp = this.handleUp.bind(this);
+    this.setColor = this.setColor.bind(this);
+    this.setTool = this.setTool.bind(this);
+  }
+
+  start(color, tool){
+    this.currentColor = color;
+    this.currentTool = tool;
+
+    this.sheet = new Sheet(512, 16, this.ctx);
+    this.sheet.draw();
+  }
+
+  handleOutsideUp() {
+    this.isDown = false;
+  }
+
+  handleSave(){
+
+  }
+
+  handleDown(){
+    this.isDown = true;
+  }
+
+  handleMove(event) {
+    event.preventDefault();
+    document.body.classList.add("unselectable");
+
+    if (this.isDown) {
+      this.executeSheet(event);
+    }
+  }
+
+  handleUp(event) {
+    event.preventDefault();
+    document.body.classList.remove("unselectable");
+
+    this.isDown = false;
+    this.executeSheet(event);
+  }
+
+  executeSheet(event) {
+    var x = event.pageX - this.canvasLeft,
+    y = event.pageY - this.canvasTop;
+    this.sheet.execute(x, y, this.currentTool, this.currentColor);
+  }
+
+  setColor(color) {
+    this.currentColor = color;
+  }
+
+  setTool(tool) {
+    this.currentTool = tool;
+  }
+
+}
 class Sheet {
 
-  constructor(canvasSize, pixelsPerRow, ctx, currentColor, currentTool) {
+  constructor(canvasSize, pixelsPerRow, ctx) {
     this.pixels = [];
     this.ctx = ctx;
-    this.currentColor = currentColor;
-    this.currentTool = currentTool;
     this.pixelsPerRow = pixelsPerRow;
 
     var pixelSize = canvasSize / pixelsPerRow;
@@ -24,63 +89,32 @@ class Sheet {
       }
     }
 
-    this.handleDown = this.handleDown.bind(this);
-    this.handleMove = this.handleMove.bind(this);
-    this.handleUp = this.handleUp.bind(this);
-    this.setColor = this.setColor.bind(this);
-    this.setTool = this.setTool.bind(this);
     this.execute = this.execute.bind(this);
     this.fill = this.fill.bind(this);
   }
 
-  handleDown(event) {
-    isDown = true;
-  }
-  handleMove(event) {
-    event.preventDefault();
-    document.body.classList.add("unselectable");
-
-    if (isDown) {
-      this.execute(event);
-    }
-  }
-  handleUp(event) {
-    event.preventDefault();
-    document.body.classList.remove("unselectable");
-
-    isDown = false;
-
-    this.execute(event);
-  }
-
-  execute(event) {
-    var x = event.pageX - canvasLeft,
-      y = event.pageY - canvasTop;
+  execute(x, y, tool, color) {
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
-        switch (this.currentTool) {
+        switch (tool) {
           case "pencil":
-            pixel.setColor(this.currentColor);
+            pixel.setColor(color);
             break;
           case "eraser":
             pixel.setColor(TRANSPARENT_COLOR);
             break;
           case "bucket":
-            if (!isDown) this.fill(pixel);
+            if (!isDown) this.fill(pixel, color);
             break;
         }
-        pixel.draw(ctx);
+        pixel.draw(this.ctx);
       }
     }, this);
   }
 
-  setColor(color) {
-    this.currentColor = color;
-  }
-  setTool(tool) {
-    this.currentTool = tool;
-  }
-  fill(pixel) {
+  
+  
+  fill(pixel, color) {
     var connectedPixels = [];
     var indexesVerified = [];
     const firstColor = pixel.color;
@@ -88,13 +122,12 @@ class Sheet {
     
     while(connectedPixels.length > 0){
       var currentPixel = connectedPixels.pop();
-      currentPixel.setColor(this.currentColor);
-      currentPixel.draw(ctx);
+      currentPixel.setColor(color);
+      currentPixel.draw(this.ctx);
       
       var indexesToVerify = currentPixel.surroundingPixels(this.pixelsPerRow).filter(
         i => !indexesVerified.includes(i)
       );
-      console.log(indexesToVerify);
 
       indexesToVerify.forEach(function (index) {
         var verifiedPixel = this.pixels[index];
@@ -104,12 +137,11 @@ class Sheet {
       }, this);
       indexesVerified.push.apply(indexesVerified, indexesToVerify);
     }
-    console.log("DONE", indexesVerified);
   }
-  draw(ctx) {
+  draw() {
     this.pixels.forEach(function (pixel) {
-      pixel.draw(ctx);
-    });
+      pixel.draw(this.ctx);
+    }, this);
   }
 }
 
@@ -150,6 +182,7 @@ class Pixel {
     ctx.fillStyle = LIGHT_GREY;
     ctx.fillRect(this.posX, this.posY, this.size/2, this.size/2);
     ctx.fillRect(this.posX+this.size/2, this.posY+this.size/2, this.size/2, this.size/2);
+    ctx.fillStyle = this.color;
   }
 
   surroundingPixels(pixelsPerRow) {
@@ -182,28 +215,23 @@ class Pixel {
 
 var canvas = document.getElementById("game-canvas"),
   picker = document.getElementById("picker"),
-  canvasLeft = canvas.offsetLeft + canvas.clientLeft,
-  canvasTop = canvas.offsetTop + canvas.clientTop,
-  elements = [],
-  tools = document.getElementsByName("tool"),
-  isDown = false;
+  saveBtn = document.getElementById("save"),
+  tools = document.getElementsByName("tool");
 
-var ctx = canvas.getContext("2d");
-var sheet = new Sheet(512, 16, ctx, picker.value, "pencil");
-sheet.draw(ctx);
+var app = new App(canvas);
+app.start(picker.value, "pencil");
 
-canvas.addEventListener("click", sheet.handleMove, false);
-canvas.addEventListener("mousedown", sheet.handleDown, false);
-canvas.addEventListener("mousemove", sheet.handleMove, false);
-canvas.addEventListener("mouseup", sheet.handleUp, false);
-window.addEventListener("mouseup", (event) => {
-  isDown = false;
-});
+saveBtn.addEventListener("click", app.handleSave, false)
+canvas.addEventListener("click", app.handleMove, false);
+canvas.addEventListener("mousedown", app.handleDown, false);
+canvas.addEventListener("mousemove", app.handleMove, false);
+canvas.addEventListener("mouseup", app.handleUp, false);
+window.addEventListener("mouseup", app.handleOutsideUp);
 picker.addEventListener("change", (event) => {
-  sheet.setColor(event.target.value);
+  app.setColor(event.target.value);
 });
 tools.forEach(function (tool) {
   tool.addEventListener("click", (event) => {
-    sheet.setTool(tool.value);
+    app.setTool(tool.value);
   });
 });
