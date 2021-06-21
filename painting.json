@@ -1,0 +1,899 @@
+{
+  "pixels": [
+    { "color": "#000000", "posX": 0, "posY": 0, "index": 0, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 0, "index": 1, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 0, "index": 2, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 0, "index": 3, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 0, "index": 4, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 0, "index": 5, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 0, "index": 6, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 0, "index": 7, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 0, "index": 8, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 0, "index": 9, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 0, "index": 10, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 0, "index": 11, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 0, "index": 12, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 0, "index": 13, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 0, "index": 14, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 0, "index": 15, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 32, "index": 16, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 32, "index": 17, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 32, "index": 18, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 32, "index": 19, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 32, "index": 20, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 32, "index": 21, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 32,
+      "index": 22,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 32,
+      "index": 23,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 32,
+      "index": 24,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 32,
+      "index": 25,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 32,
+      "index": 26,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 32,
+      "index": 27,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 32,
+      "index": 28,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 32,
+      "index": 29,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 448, "posY": 32, "index": 30, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 32, "index": 31, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 64, "index": 32, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 64, "index": 33, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 64, "index": 34, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 64, "index": 35, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 64, "index": 36, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 64, "index": 37, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 64, "index": 38, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 64,
+      "index": 39,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 64,
+      "index": 40,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 64,
+      "index": 41,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 64,
+      "index": 42,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 64,
+      "index": 43,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 64,
+      "index": 44,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 64,
+      "index": 45,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 64,
+      "index": 46,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 64, "index": 47, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 96, "index": 48, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 96, "index": 49, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 96, "index": 50, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 96, "index": 51, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 96, "index": 52, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 96, "index": 53, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 96, "index": 54, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 96, "index": 55, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 96,
+      "index": 56,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 96,
+      "index": 57,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 96,
+      "index": 58,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 96,
+      "index": 59,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 96,
+      "index": 60,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 96,
+      "index": 61,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 96,
+      "index": 62,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 96, "index": 63, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 128, "index": 64, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 128, "index": 65, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 128, "index": 66, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 128, "index": 67, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 128, "index": 68, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 128, "index": 69, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 128, "index": 70, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 128, "index": 71, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 128,
+      "index": 72,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 128,
+      "index": 73,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 128,
+      "index": 74,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 128,
+      "index": 75,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 128,
+      "index": 76,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 128,
+      "index": 77,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 128,
+      "index": 78,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 128, "index": 79, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 160, "index": 80, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 160,
+      "index": 81,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 64, "posY": 160, "index": 82, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 160, "index": 83, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 160, "index": 84, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 160, "index": 85, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 160, "index": 86, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 160, "index": 87, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 160, "index": 88, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 160,
+      "index": 89,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 160,
+      "index": 90,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 160,
+      "index": 91,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 160,
+      "index": 92,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 160,
+      "index": 93,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 160,
+      "index": 94,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 160, "index": 95, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 192, "index": 96, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 192,
+      "index": 97,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 192,
+      "index": 98,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 96, "posY": 192, "index": 99, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 192, "index": 100, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 192, "index": 101, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 192, "index": 102, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 192, "index": 103, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 192, "index": 104, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 192, "index": 105, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 192,
+      "index": 106,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 192,
+      "index": 107,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 192,
+      "index": 108,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 192,
+      "index": 109,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 192,
+      "index": 110,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 192, "index": 111, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 224, "index": 112, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 224,
+      "index": 113,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 224,
+      "index": 114,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 224,
+      "index": 115,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 128, "posY": 224, "index": 116, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 224, "index": 117, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 224, "index": 118, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 224, "index": 119, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 224, "index": 120, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 224, "index": 121, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 224, "index": 122, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 352,
+      "posY": 224,
+      "index": 123,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 224,
+      "index": 124,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 224,
+      "index": 125,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 224,
+      "index": 126,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 224, "index": 127, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 256, "index": 128, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 256,
+      "index": 129,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 256,
+      "index": 130,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 256,
+      "index": 131,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 256,
+      "index": 132,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 160, "posY": 256, "index": 133, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 256, "index": 134, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 256, "index": 135, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 256, "index": 136, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 256, "index": 137, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 256, "index": 138, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 256, "index": 139, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 384,
+      "posY": 256,
+      "index": 140,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 256,
+      "index": 141,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 256,
+      "index": 142,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 256, "index": 143, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 288, "index": 144, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 288,
+      "index": 145,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 288,
+      "index": 146,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 288,
+      "index": 147,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 288,
+      "index": 148,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 288,
+      "index": 149,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 192, "posY": 288, "index": 150, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 288, "index": 151, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 288, "index": 152, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 288, "index": 153, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 288, "index": 154, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 288, "index": 155, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 288, "index": 156, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 416,
+      "posY": 288,
+      "index": 157,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 288,
+      "index": 158,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 288, "index": 159, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 320, "index": 160, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 320,
+      "index": 161,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 320,
+      "index": 162,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 320,
+      "index": 163,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 320,
+      "index": 164,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 320,
+      "index": 165,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 320,
+      "index": 166,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 224, "posY": 320, "index": 167, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 320, "index": 168, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 320, "index": 169, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 320, "index": 170, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 320, "index": 171, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 320, "index": 172, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 320, "index": 173, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 448,
+      "posY": 320,
+      "index": 174,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 480, "posY": 320, "index": 175, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 352, "index": 176, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 352,
+      "index": 177,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 352,
+      "index": 178,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 352,
+      "index": 179,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 352,
+      "index": 180,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 352,
+      "index": 181,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 352,
+      "index": 182,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 352,
+      "index": 183,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 256, "posY": 352, "index": 184, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 352, "index": 185, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 352, "index": 186, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 352, "index": 187, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 352, "index": 188, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 352, "index": 189, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 352, "index": 190, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 352, "index": 191, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 384, "index": 192, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 384,
+      "index": 193,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 384,
+      "index": 194,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 384,
+      "index": 195,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 384,
+      "index": 196,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 384,
+      "index": 197,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 384,
+      "index": 198,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 384,
+      "index": 199,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 384,
+      "index": 200,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 288, "posY": 384, "index": 201, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 384, "index": 202, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 384, "index": 203, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 384, "index": 204, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 384, "index": 205, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 384, "index": 206, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 384, "index": 207, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 416, "index": 208, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 416,
+      "index": 209,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 416,
+      "index": 210,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 416,
+      "index": 211,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 416,
+      "index": 212,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 416,
+      "index": 213,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 416,
+      "index": 214,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 416,
+      "index": 215,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 416,
+      "index": 216,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 416,
+      "index": 217,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 320, "posY": 416, "index": 218, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 416, "index": 219, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 416, "index": 220, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 416, "index": 221, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 416, "index": 222, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 416, "index": 223, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 448, "index": 224, "size": 32 },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 32,
+      "posY": 448,
+      "index": 225,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 64,
+      "posY": 448,
+      "index": 226,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 96,
+      "posY": 448,
+      "index": 227,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 128,
+      "posY": 448,
+      "index": 228,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 160,
+      "posY": 448,
+      "index": 229,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 192,
+      "posY": 448,
+      "index": 230,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 224,
+      "posY": 448,
+      "index": 231,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 256,
+      "posY": 448,
+      "index": 232,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 288,
+      "posY": 448,
+      "index": 233,
+      "size": 32
+    },
+    {
+      "color": "rgba(255,255,255,0)",
+      "posX": 320,
+      "posY": 448,
+      "index": 234,
+      "size": 32
+    },
+    { "color": "#000000", "posX": 352, "posY": 448, "index": 235, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 448, "index": 236, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 448, "index": 237, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 448, "index": 238, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 448, "index": 239, "size": 32 },
+    { "color": "#000000", "posX": 0, "posY": 480, "index": 240, "size": 32 },
+    { "color": "#000000", "posX": 32, "posY": 480, "index": 241, "size": 32 },
+    { "color": "#000000", "posX": 64, "posY": 480, "index": 242, "size": 32 },
+    { "color": "#000000", "posX": 96, "posY": 480, "index": 243, "size": 32 },
+    { "color": "#000000", "posX": 128, "posY": 480, "index": 244, "size": 32 },
+    { "color": "#000000", "posX": 160, "posY": 480, "index": 245, "size": 32 },
+    { "color": "#000000", "posX": 192, "posY": 480, "index": 246, "size": 32 },
+    { "color": "#000000", "posX": 224, "posY": 480, "index": 247, "size": 32 },
+    { "color": "#000000", "posX": 256, "posY": 480, "index": 248, "size": 32 },
+    { "color": "#000000", "posX": 288, "posY": 480, "index": 249, "size": 32 },
+    { "color": "#000000", "posX": 320, "posY": 480, "index": 250, "size": 32 },
+    { "color": "#000000", "posX": 352, "posY": 480, "index": 251, "size": 32 },
+    { "color": "#000000", "posX": 384, "posY": 480, "index": 252, "size": 32 },
+    { "color": "#000000", "posX": 416, "posY": 480, "index": 253, "size": 32 },
+    { "color": "#000000", "posX": 448, "posY": 480, "index": 254, "size": 32 },
+    { "color": "#000000", "posX": 480, "posY": 480, "index": 255, "size": 32 }
+  ],
+  "ctx": {},
+  "pixelsPerRow": 16,
+  "canvasSize": 512
+}
