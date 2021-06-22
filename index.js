@@ -1,7 +1,7 @@
 const TRANSPARENT_COLOR = "rgba(255,255,255,0)";
 const LIGHT_GREY = "#EEE";
 const DARK_GREY = "#DDD";
-const SEPARATOR = '|';
+const SEPARATOR = "|";
 
 // Classes
 class App {
@@ -11,6 +11,7 @@ class App {
       (this.canvasTop = canvas.offsetTop + canvas.clientTop),
       (this.isDown = false);
     this.ctx = canvas.getContext("2d");
+    this.history = [];
 
     this.handleDown = this.handleDown.bind(this);
     this.handleMove = this.handleMove.bind(this);
@@ -27,6 +28,8 @@ class App {
 
     this.sheet = new Sheet(canvas.width, 16, this.ctx);
     this.sheet.draw(this.ctx);
+
+    this.saveHistory();
   }
 
   handleOutsideUp() {
@@ -57,18 +60,21 @@ class App {
     }
     var reader = new FileReader();
     reader.onload = (e) => {
-      var contents = e.target.result;
-
-      var newPixels = [];
-      var colorInfo = contents.split(SEPARATOR);
-      var pixelsPerRow = colorInfo.shift();
-      
-      var newSheet = new Sheet(this.canvas.width, pixelsPerRow);
-      newSheet.initializePixels(colorInfo);
-      this.sheet = newSheet;
-      this.sheet.draw(this.ctx);
+      var sheetInfo = e.target.result;
+      this.replaceSheet(sheetInfo);
+      this.saveHistory();
     };
     reader.readAsText(file);
+  }
+
+  replaceSheet(sheetInfo) {
+    var colorInfo = sheetInfo.split(SEPARATOR);
+    var pixelsPerRow = parseInt(colorInfo.shift());
+
+    var newSheet = new Sheet(this.canvas.width, pixelsPerRow);
+    newSheet.initializePixels(colorInfo);
+    this.sheet = newSheet;
+    this.sheet.draw(this.ctx);
   }
 
   handleDown() {
@@ -90,12 +96,22 @@ class App {
 
     this.isDown = false;
     this.executeSheet(event);
+    this.saveHistory();
+  }
+
+  saveHistory() {
+    this.history.push(this.sheet.burn());
   }
 
   executeSheet(event) {
     var x = event.pageX - this.canvasLeft,
       y = event.pageY - this.canvasTop;
     this.sheet.execute(x, y, this.currentTool, this.currentColor, this.ctx);
+  }
+
+  undo() {
+    this.history.pop();
+    this.replaceSheet(this.history[this.history.length - 1]);
   }
 
   setColor(color) {
@@ -116,24 +132,29 @@ class Sheet {
     this.execute = this.execute.bind(this);
     this.fill = this.fill.bind(this);
   }
-  
-  initializePixels(colors = null){
+
+  initializePixels(colors = null) {
+    this.pixels = [];
     var pixelSize = this.canvasSize / this.pixelsPerRow;
     var x,
       y = 0,
       i = 0;
     for (y = 0; y < this.pixelsPerRow; y++) {
       for (x = 0; x < this.pixelsPerRow; x++) {
-        if(colors){
-          this.pixels.push(new Pixel(pixelSize * x, pixelSize * y, pixelSize, i, colors[i]));
+        if (colors) {
+          this.pixels.push(
+            new Pixel(pixelSize * x, pixelSize * y, pixelSize, i, colors[i])
+          );
         } else {
-          this.pixels.push(new Pixel(pixelSize * x, pixelSize * y, pixelSize, i));
+          this.pixels.push(
+            new Pixel(pixelSize * x, pixelSize * y, pixelSize, i)
+          );
         }
         i++;
       }
     }
-  }  
-  
+  }
+
   execute(x, y, tool, color, ctx) {
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
@@ -183,15 +204,14 @@ class Sheet {
     }, this);
   }
   burn() {
-    var colorArray = [];
-    colorArray.push(this.pixelsPerRow.toString());
-    this.pixels.forEach(function(pixel){
-      colorArray.push(pixel.color);
+    var sheetInfo = [];
+    sheetInfo.push(this.pixelsPerRow.toString());
+    this.pixels.forEach(function (pixel) {
+      sheetInfo.push(pixel.color);
     });
-    return (colorArray.join(SEPARATOR));
+    return sheetInfo.join(SEPARATOR);
   }
 }
-  
 
 class Pixel {
   constructor(posX, posY, size, index, color = TRANSPARENT_COLOR) {
@@ -294,4 +314,10 @@ tools.forEach(function (tool) {
   tool.addEventListener("click", (event) => {
     app.setTool(tool.value);
   });
+});
+document.addEventListener("keyup", function (event) {
+  // if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+  if (event.key === "z") {
+    app.undo();
+  }
 });
