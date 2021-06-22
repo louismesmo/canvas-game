@@ -1,6 +1,7 @@
 const TRANSPARENT_COLOR = "rgba(255,255,255,0)";
 const LIGHT_GREY = "#EEE";
 const DARK_GREY = "#DDD";
+const SEPARATOR = '|';
 
 // Classes
 class App {
@@ -24,7 +25,7 @@ class App {
     this.currentColor = color;
     this.currentTool = tool;
 
-    this.sheet = new Sheet(512, 16, this.ctx);
+    this.sheet = new Sheet(canvas.width, 16, this.ctx);
     this.sheet.draw(this.ctx);
   }
 
@@ -33,14 +34,15 @@ class App {
   }
 
   handleSave() {
-    var sheetJson = JSON.stringify(this.sheet);
-    var bl = new Blob([sheetJson], {
+    var sheetInfo = this.sheet.burn();
+
+    var bl = new Blob([sheetInfo], {
       type: "text/html",
     });
     var a = document.createElement("a");
 
     a.href = URL.createObjectURL(bl);
-    a.download = "painting.json";
+    a.download = "painting.pinfo";
     a.hidden = true;
     document.body.appendChild(a);
     a.innerHTML = "someinnerhtml";
@@ -56,17 +58,15 @@ class App {
     var reader = new FileReader();
     reader.onload = (e) => {
       var contents = e.target.result;
-      console.log(contents);
 
       var newPixels = [];
-      var parsedFile = JSON.parse(contents);
-      parsedFile.pixels.forEach(pixel => newPixels.push(Object.assign(new Pixel(), pixel)));
-      var newSheet = Object.assign(new Sheet(), parsedFile);
-      newSheet.pixels = newPixels;
-
+      var colorInfo = contents.split(SEPARATOR);
+      var pixelsPerRow = colorInfo.shift();
+      
+      var newSheet = new Sheet(this.canvas.width, pixelsPerRow);
+      newSheet.initializePixels(colorInfo);
       this.sheet = newSheet;
       this.sheet.draw(this.ctx);
-      console.log(newSheet);
     };
     reader.readAsText(file);
   }
@@ -112,21 +112,28 @@ class Sheet {
     this.pixelsPerRow = pixelsPerRow;
     this.canvasSize = canvasSize;
 
-    var pixelSize = canvasSize / pixelsPerRow;
-    var x,
-      y = 0,
-      i = 0;
-    for (y = 0; y < pixelsPerRow; y++) {
-      for (x = 0; x < pixelsPerRow; x++) {
-        this.pixels.push(new Pixel(pixelSize * x, pixelSize * y, pixelSize, i));
-        i++;
-      }
-    }
-
+    this.initializePixels();
     this.execute = this.execute.bind(this);
     this.fill = this.fill.bind(this);
   }
-
+  
+  initializePixels(colors = null){
+    var pixelSize = this.canvasSize / this.pixelsPerRow;
+    var x,
+      y = 0,
+      i = 0;
+    for (y = 0; y < this.pixelsPerRow; y++) {
+      for (x = 0; x < this.pixelsPerRow; x++) {
+        if(colors){
+          this.pixels.push(new Pixel(pixelSize * x, pixelSize * y, pixelSize, i, colors[i]));
+        } else {
+          this.pixels.push(new Pixel(pixelSize * x, pixelSize * y, pixelSize, i));
+        }
+        i++;
+      }
+    }
+  }  
+  
   execute(x, y, tool, color, ctx) {
     this.pixels.forEach(function (pixel) {
       if (pixel.collides(x, y)) {
@@ -175,7 +182,16 @@ class Sheet {
       pixel.draw(ctx);
     }, this);
   }
+  burn() {
+    var colorArray = [];
+    colorArray.push(this.pixelsPerRow.toString());
+    this.pixels.forEach(function(pixel){
+      colorArray.push(pixel.color);
+    });
+    return (colorArray.join(SEPARATOR));
+  }
 }
+  
 
 class Pixel {
   constructor(posX, posY, size, index, color = TRANSPARENT_COLOR) {
