@@ -2,6 +2,8 @@ const TRANSPARENT_COLOR = "rgba(255,255,255,0)";
 const LIGHT_GREY = "#EEE";
 const DARK_GREY = "#DDD";
 const SEPARATOR = "|";
+const DEFAULT_FILENAME = "painting";
+const FILE_EXTENSION = ".pinfo";
 
 // Classes
 class App {
@@ -12,6 +14,8 @@ class App {
       (this.isDown = false);
     this.ctx = canvas.getContext("2d");
     this.history = [];
+    this.fileName = DEFAULT_FILENAME;
+
 
     this.handleDown = this.handleDown.bind(this);
     this.handleMove = this.handleMove.bind(this);
@@ -20,6 +24,7 @@ class App {
     this.setTool = this.setTool.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.renameFile = this.renameFile.bind(this);
   }
 
   start(color, tool) {
@@ -36,6 +41,12 @@ class App {
     this.isDown = false;
   }
 
+  renameFile(event){
+    var fname = event.target.value.replace(".","_");
+    this.fileName = fname ? fname : DEFAULT_FILENAME;
+    event.target.value = fname;
+  }
+
   handleSave() {
     var sheetInfo = this.sheet.burn();
 
@@ -45,7 +56,7 @@ class App {
     var a = document.createElement("a");
 
     a.href = URL.createObjectURL(bl);
-    a.download = "painting.pinfo";
+    a.download = this.fileName + FILE_EXTENSION;
     a.hidden = true;
     document.body.appendChild(a);
     a.innerHTML = "someinnerhtml";
@@ -297,9 +308,8 @@ var canvas = document.getElementById("game-canvas"),
   saveBtn = document.getElementById("save"),
   openInput = document.getElementById("open-input"),
   openBtn = document.getElementById("open-btn"),
-  tools = document.getElementsByName("tool");
-
-// console.log(tools);
+  tools = document.getElementsByName("tool"),
+  fileNameInput = document.getElementById("file-name");
 
 var app = new App(canvas);
 app.start(picker.value, "pencil");
@@ -323,6 +333,8 @@ openBtn.addEventListener(
   },
   false
 );
+fileNameInput.addEventListener("change", app.renameFile, false);
+
 tools.forEach(function (tool) {
   tool.addEventListener("click", (event) => {
     app.setTool(tool.value);

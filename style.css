@@ -1,6 +1,11 @@
 body {
   background: rgb(2,0,36);
-  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(192, 192, 192) 0%, rgba(224,224,224,1) 100%);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(133, 133, 133) 0%, rgb(223, 223, 223) 100%);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+input {
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 #game-canvas {
@@ -81,6 +86,18 @@ body {
   width: 40px;
   height: 40px;
   max-width: 40px;
+  max-height: 40px;
+  margin-left: 0.5rem;
+  text-align: center;
+  background-color: rgb(236, 236, 236);
+  /* display: inline-block; */
+}
+
+.text-tool {
+  border: 2px solid black;
+  width: 400px;
+  height: 40px;
+  max-width: 400px;
   max-height: 40px;
   margin-left: 0.5rem;
   text-align: center;
