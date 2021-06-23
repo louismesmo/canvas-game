@@ -1,19 +1,16 @@
-#game-canvas {
-  border: 2px solid black;
-  box-shadow: 5px 5px black;
-  background: transparent;
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(192, 192, 192) 0%, rgba(224,224,224,1) 100%);
 }
-#save{
-  margin-bottom: 1rem;
+
+#game-canvas {
+  border: 3px solid black;
+  background: transparent;
 }
 
 .container {
   padding: 1rem;
   width: 100%;
-}
-
-body {
-  background-color: rgb(255, 230, 255);
 }
 
 .center {
@@ -23,6 +20,8 @@ body {
 
 .toolbar {
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
 }
 
 .btn-action {
@@ -36,18 +35,36 @@ body {
   cursor: pointer;
 }
 
-.tool {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+#open-input {
+  display: none;
 }
 
-.tool:checked {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+#picker{
+  /* border-radius: 100%; */
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+  outline: none;
+  -webkit-appearance: none;
+  padding: 0;
+}
+#picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+}
+#picker::-webkit-color-swatch {
+  /* border: 2px solid black; */
+  border: none;
+  /* border-radius: 100%; */
+}
+#picker:hover {
+  cursor: pointer;
+  filter: brightness(85%);
+}
+
+.tool-selected {
+  border: 2px solid black !important;
+  background-color: rgb(139, 139, 139) !important;
 }
 
 .unselectable {
@@ -59,15 +76,23 @@ body {
   user-select: none;
 }
 
-.toolbar label {
+.tool {
   border: 2px solid black;
-  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  margin-left: 0.5rem;
   text-align: center;
-  line-height: 25px;
-  background-color: lightgrey;
+  background-color: rgb(236, 236, 236);
+  /* display: inline-block; */
 }
 
-.toolbar label:hover {
-  background-color: grey;
+.tool svg {
+  color: black;
+}
+
+.tool:hover {
+  background-color: rgb(180, 180, 180);
   cursor: pointer;
 }

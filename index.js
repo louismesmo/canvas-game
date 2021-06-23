@@ -293,15 +293,19 @@ class Pixel {
 
 var canvas = document.getElementById("game-canvas"),
   picker = document.getElementById("picker"),
+  pickerContainer = document.getElementById("picker-container"),
   saveBtn = document.getElementById("save"),
-  openBtn = document.getElementById("open"),
+  openInput = document.getElementById("open-input"),
+  openBtn = document.getElementById("open-btn"),
   tools = document.getElementsByName("tool");
+
+// console.log(tools);
 
 var app = new App(canvas);
 app.start(picker.value, "pencil");
 
 saveBtn.addEventListener("click", app.handleSave, false);
-openBtn.addEventListener("change", app.handleOpen, false);
+openInput.addEventListener("change", app.handleOpen, false);
 canvas.addEventListener("click", app.handleMove, false);
 canvas.addEventListener("mousedown", app.handleDown, false);
 canvas.addEventListener("mousemove", app.handleMove, false);
@@ -309,10 +313,21 @@ canvas.addEventListener("mouseup", app.handleUp, false);
 window.addEventListener("mouseup", app.handleOutsideUp);
 picker.addEventListener("change", (event) => {
   app.setColor(event.target.value);
+  pickerContainer.innerHTML = colorButton.value;
+  pickerContainer.style.color = colorButton.value;
 });
+openBtn.addEventListener(
+  "click",
+  (event) => {
+    openInput.click();
+  },
+  false
+);
 tools.forEach(function (tool) {
   tool.addEventListener("click", (event) => {
     app.setTool(tool.value);
+    tools.forEach(function (tool) { tool.classList.remove('tool-selected'); } );
+    tool.classList.add('tool-selected');
   });
 });
 document.addEventListener("keyup", function (event) {
