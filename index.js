@@ -131,6 +131,7 @@ class App {
 
   setTool(tool) {
     this.currentTool = tool;
+    this.canvas.className = "cursor-"+tool;
   }
 }
 class Sheet {
