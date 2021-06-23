@@ -13,6 +13,18 @@ input {
   background: transparent;
 }
 
+.cursor-pencil {
+  cursor: url('icons/pencil.svg'), move;
+}
+
+.cursor-eraser {
+  cursor: url('icons/eraser.svg'), move;
+}
+
+.cursor-bucket {
+  cursor: url('icons/bucket.svg'), move;
+}
+
 .container {
   padding: 1rem;
   width: 100%;
